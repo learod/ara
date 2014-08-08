@@ -6,3 +6,5 @@ puts ENV['enviroment']
 
 Mongoid.load!(File.dirname(__FILE__) + '/config/mongoid.yml' , :development)
 Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each {|file| require file }
+
+I18n.enforce_available_locales = false

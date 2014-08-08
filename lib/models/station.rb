@@ -1,12 +1,3 @@
-# <numero>32001</numero>
-# <nombre>Virasoro</nombre>
-# <latitud>-28.089</latitud>
-# <longitud>-56.0299</longitud>
-# <altura>149</altura>
-# <localidad>Virasoro</localidad>
-# <provincia>Corrientes</provincia>
-# <fechaInstalacion>18/12/2013</fechaInstalacion>
-
 class Station
   include Mongoid::Document
 
@@ -19,7 +10,13 @@ class Station
   field :state, type: String
   field :install_date, type: Date
 
+  embeds_many :samples
+  accepts_nested_attributes_for :samples
 
   validates_uniqueness_of :number
+
+  def to_s
+    "#{town}: #{number}"
+  end
 
 end
